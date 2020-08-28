@@ -60,7 +60,7 @@ const config = {
                     {loader: 'css-loader'},
                     'stylus-loader',
                     'cache-loader',
-                ]
+                ],
             },
             {
                 test: /\.css$/,
@@ -68,6 +68,18 @@ const config = {
                     {loader: "style-loader"},
                     {loader: "css-loader"},
                     'cache-loader',
+                ]
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'fonts/'
+                        }
+                    }
                 ]
             }
         ]
