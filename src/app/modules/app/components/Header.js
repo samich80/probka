@@ -4,6 +4,7 @@ import {
   formatRusPhoneNumber,
   formatRusPhoneNumberForCall,
 } from '../../../utils/formatters';
+import Cart from '../../cart/utils/Cart';
 
 export default ({ phoneForCall, phoneForWhatsApp }) => (
   <header className="container-fluid">
@@ -26,9 +27,10 @@ export default ({ phoneForCall, phoneForWhatsApp }) => (
               <div className="cart">
                 <a
                   target="_blank"
-                  id="phone-for-whats-app"
+                  className="phone-for-whats-app"
                   href={`https://wa.me/${phoneForWhatsApp}`}
                   rel="noopener noreferrer"
+                  onClick={Cart.submitCartWhatsApp}
                 >
                   <i className="fab fa-whatsapp"/>
                   Предварительный заказ

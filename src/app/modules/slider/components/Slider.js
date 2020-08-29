@@ -3,7 +3,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import '../styles/Slider.styl';
 
-export default () => (
+export default ({ list }) => (
   <div className="slider-top">
     <Carousel
       showThumbs={false}
@@ -11,18 +11,12 @@ export default () => (
       autoPlay
       infiniteLoop
     >
-      <div>
-        <img src="/assets/images/1.jpeg"/>
-        <p className="legend">Широкий ассортимент снэков</p>
-      </div>
-      <div>
-        <img src="/assets/images/2.jpeg"/>
-        <p className="legend">Рыба и морепродукты</p>
-      </div>
-      <div>
-        <img src="/assets/images/3.jpeg"/>
-        <p className="legend">Добро пожаловать!</p>
-      </div>
+      {list.map(({ image, title }) => (
+        <div>
+          <img src={image}/>
+          <p className="legend">{title}</p>
+        </div>
+      ))}
     </Carousel>
   </div>
 );

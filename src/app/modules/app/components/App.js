@@ -8,20 +8,24 @@ import Contacts from '../../contacts/componets/Contacts';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/js/all.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import { beerList, productList } from '../../../config/products';
+import { productList } from '../../../config/products';
 import { contacts } from '../../../config/contacts';
+import CartIndicator from '../../cart/components/CartIndicator';
+import CartModal from '../../cart/components/CartModal';
+import slides from '../../../config/slides';
 
 const App = () => (
   <>
     <Header {...contacts} />
     <main className="container">
-
-      <Slider/>
-      <ProductsList title="Пивные радости" list={beerList}/>
-      <ProductsList title="Подпивные радости" list={productList}/>
+      <Slider list={slides}/>
+      <ProductsList title="Пивные радости" list={productList.filter(p => p.category === 'beer')}/>
+      <ProductsList title="Подпивные радости" list={productList.filter(p => p.category === 'snack')}/>
       <Contacts {...contacts}/>
     </main>
     <Footer {...contacts}/>
+    <CartIndicator/>
+    <CartModal {...contacts}/>
   </>
 );
 
