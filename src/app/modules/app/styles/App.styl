@@ -1,12 +1,60 @@
 @font-face {
   font-family: CooperBlack;
-  src: url("../assets/fonts/CooperBlackRegular.ttf"); /* Путь к файлу со шрифтом */
+  src: url("/assets/fonts/CooperBlackRegular.ttf"); /* Путь к файлу со шрифтом */
 }
 *
-  font-size 14px
+  font-size 15px
+.hidden
+  display none !important
+#root
+  .table
+    td, th
+      vertical-align middle
 
 @media screen and (max-width: 767px)
-  main
-    &.container
-      padding-right 5px
-      padding-left 5px
+  .table-adaptive
+    /* Force table to not be like tables anymore */
+
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+      position: absolute
+      top: -9999px
+      left: -9999px
+    }
+
+    tr
+      border: 1px solid #ccc
+
+    td {
+      /* Behave  like a "row" */
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 50%;
+      display: flex
+    }
+
+    td:before
+      /* Now like a table header */
+      position relative
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      font-weight bold
+
+    td
+      &[data-column-title]
+        &:before
+          content: attr(data-column-title)
+
+
+  div
+    &.form
+      margin 10px auto
+
+      .input-group
+        margin-bottom 0 !important

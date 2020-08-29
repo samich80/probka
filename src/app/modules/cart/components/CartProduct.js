@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
-import Cart from '../../cart/utils/Cart';
+import React from 'react';
+import Cart from '../utils/Cart';
+import '../styles/CartProduct.styl';
 
-export default ({ index, title, price, measure, id, amountStep, minAmount }) => {
-  const [amount, setAmount] = useState(0);
+export default ({ index, title, price, measure, id, amountStep, amount, minAmount }) => {
   const onDecAmount = () => {
     if (amount - amountStep < minAmount) return;
-    setAmount(amount - amountStep);
+    Cart.updateProduct(id, { amount: amount - amountStep });
   };
   const onIncAmount = () => {
     let newAmount = amount + amountStep;
     if (newAmount < minAmount) {
       newAmount = minAmount;
     }
-    setAmount(newAmount);
+    Cart.updateProduct(id, { amount: newAmount });
   };
-  const onAddProduct = () => {
-    if (!amount) return;
-    Cart.addProduct({ id, amount });
-    setAmount(0);
+  const onRemoveProduct = () => {
+    Cart.removeProduct(id);
   };
   return (
     <tr className="product">
@@ -39,12 +37,11 @@ export default ({ index, title, price, measure, id, amountStep, minAmount }) => 
               </div>
               <input
                 type="number"
-                className="form-control text-center"
+                className="form-control"
                 aria-label="Количество"
                 step={amountStep}
-                min={minAmount || 0}
+                min={0}
                 value={amount || ''}
-                onChange={({ target }) => setAmount(target.value)}
               />
               <div className="input-group-append">
                 <button
@@ -57,15 +54,17 @@ export default ({ index, title, price, measure, id, amountStep, minAmount }) => 
               </div>
             </div>
           </div>
-          <div className="order">
-            <button
-              title="Добавить к заказу"
-              className="btn btn-primary"
-              onClick={onAddProduct}
-            >
-              <i className="fas fa-shopping-basket"/>
-            </button>
-          </div>
+        </div>
+      </td>
+      <td>
+        <div className="actions">
+          <button
+            title="Удалить"
+            className="btn btn-primary"
+            onClick={onRemoveProduct}
+          >
+            <i className="fas fa-trash-alt"/>
+          </button>
         </div>
       </td>
     </tr>
