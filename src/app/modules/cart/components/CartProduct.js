@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Cart from '../../cart/utils/Cart';
+import React from 'react';
+import Cart from '../utils/Cart';
 import '../styles/CartProduct.styl';
 
 export default ({ index, title, price, measure, id, amountStep, amount, minAmount }) => {
@@ -63,10 +63,10 @@ export default ({ index, title, price, measure, id, amountStep, amount, minAmoun
             className="btn btn-primary"
             onClick={onRemoveProduct}
           >
-            <i className="far fa-trash-alt"/>
+            <i className="fas fa-trash-alt"/>
           </button>
         </div>
       </td>
     </tr>
   );
-}
+};

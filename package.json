@@ -20,6 +20,7 @@
   },
   "scripts": {
     "build": "./node_modules/.bin/webpack",
+    "build-prod": "./node_modules/.bin/webpack --config=webpack.config.prod.js",
     "watch": "./node_modules/.bin/webpack -w"
   },
   "eslintConfig": {

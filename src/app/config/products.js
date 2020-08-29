@@ -1,4 +1,4 @@
-export const productList = [
+export default [
   {
     id: 1,
     title: 'Бойлерное (светлое 4,5%)',

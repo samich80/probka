@@ -1,11 +1,15 @@
 @font-face {
   font-family: CooperBlack;
-  src: url("../assets/fonts/CooperBlackRegular.ttf"); /* Путь к файлу со шрифтом */
+  src: url("/assets/fonts/CooperBlackRegular.ttf"); /* Путь к файлу со шрифтом */
 }
 *
   font-size 15px
 .hidden
   display none !important
+#root
+  .table
+    td, th
+      vertical-align middle
 
 @media screen and (max-width: 767px)
   .table-adaptive

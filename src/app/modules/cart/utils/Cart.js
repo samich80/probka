@@ -1,4 +1,4 @@
-import { productList } from '../../../config/products';
+import productList from '../../../config/products';
 
 class Cart {
   static cart;
@@ -58,7 +58,7 @@ class Cart {
     let text = `Заказ №${orderNumber} с сайта ${location.host}:\n\r `;
     Cart.getCart()
         .forEach(
-          (p, i) => text += `${i + 1}) ${p.title} - ${p.amount}${i < Cart.getCart().length - 1 ? ';' : '. '} \n`);
+          (p, i) => text += `${i + 1}) ${p.title} - ${p.amount} ${p.measure}${i < Cart.getCart().length - 1 ? ';' : '. '} \n`);
     text += `\nПредварительная сумма заказа: ${Math.floor(Cart.getTotalSum())} руб. `;
     return encodeURI(text);
   }

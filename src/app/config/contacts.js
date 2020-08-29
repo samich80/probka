@@ -1,4 +1,4 @@
-export const contacts = {
+export default {
   phoneForCall: '+79881067886',
   phoneForWhatsApp: '+79881067886', // !IMPORTANT do not change format
   email: '', // @TODO add
