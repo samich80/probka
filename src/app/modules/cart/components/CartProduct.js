@@ -1,18 +1,19 @@
 import React from 'react';
 import Cart from '../utils/Cart';
 import '../styles/CartProduct.styl';
+import { roundToTwoDigits } from '../../../utils/formatters';
 
 export default ({ index, title, price, measure, id, amountStep, amount, minAmount }) => {
   const onDecAmount = () => {
     if (amount - amountStep < minAmount) return;
-    Cart.updateProduct(id, { amount: amount - amountStep });
+    Cart.updateProduct(id, { amount: roundToTwoDigits(amount - amountStep) });
   };
   const onIncAmount = () => {
-    let newAmount = amount + amountStep;
+    let newAmount = roundToTwoDigits(amount + amountStep);
     if (newAmount < minAmount) {
       newAmount = minAmount;
     }
-    Cart.updateProduct(id, { amount: newAmount });
+    Cart.updateProduct(id, { amount: roundToTwoDigits(newAmount) });
   };
   const onRemoveProduct = () => {
     Cart.removeProduct(id);
@@ -42,6 +43,8 @@ export default ({ index, title, price, measure, id, amountStep, amount, minAmoun
                 step={amountStep}
                 min={0}
                 value={amount || ''}
+                onChange={({ target }) =>
+                  Cart.updateProduct(id, { amount: roundToTwoDigits(target.value) })}
               />
               <div className="input-group-append">
                 <button
