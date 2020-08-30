@@ -13,7 +13,7 @@ export default ({ list }) => (
     >
       {list.map(({ image, title }) => (
         <div>
-          <img src={image}/>
+          <img src={image} alt={`Слайд "${title}"`}/>
           <p className="legend">{title}</p>
         </div>
       ))}

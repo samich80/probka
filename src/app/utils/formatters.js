@@ -17,7 +17,10 @@ const formatRusPhoneNumberForCall = (phone) => {
   return cleaned;
 };
 
+const roundToTwoDigits = (num) => num ? (Math.round((parseFloat(num) + Number.EPSILON) * 100) / 100) : 0;
+
 export {
   formatRusPhoneNumber,
   formatRusPhoneNumberForCall,
+  roundToTwoDigits,
 };
