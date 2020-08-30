@@ -57,7 +57,7 @@ class Cart {
     const date = new Date();
     const orderNumber =
       `${date.getDate()}${date.getHours()}${date.getMinutes()}${Math.random().toString().substr(-1)}`;
-    let text = `Заказ №${orderNumber} с сайта ${location.host}:\n\r `;
+    let text = `Заказ №${orderNumber} с сайта ${location.host}: \n\r`;
     Cart.getCart()
         .forEach(
           (p, i) =>

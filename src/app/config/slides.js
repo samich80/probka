@@ -4,7 +4,11 @@ export default [
     title: 'Добро пожаловать!',
   },
   {
-    image: '/assets/images/slides/1.jpeg',
+    image: '/assets/images/slides/beer.jpeg',
+    title: 'Вкусное свежее пиво',
+  },
+  {
+    image: '/assets/images/slides/snacks.jpeg',
     title: 'Широкий ассортимент снэков',
   },
   {
