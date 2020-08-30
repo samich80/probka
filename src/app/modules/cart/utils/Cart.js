@@ -1,4 +1,5 @@
 import productList from '../../../config/products';
+import { roundToTwoDigits } from '../../../utils/formatters';
 
 class Cart {
   static cart;
@@ -54,17 +55,19 @@ class Cart {
       return 'Здравствуйте, расскажите, пожалуйста, об услуге предварительного заказа в вашем магазине.';
     }
     const date = new Date();
-    const orderNumber = `${date.getDate()}${date.getHours()}${date.getMinutes()}${Math.random().toString().substr(-1)}`;
+    const orderNumber =
+      `${date.getDate()}${date.getHours()}${date.getMinutes()}${Math.random().toString().substr(-1)}`;
     let text = `Заказ №${orderNumber} с сайта ${location.host}:\n\r `;
     Cart.getCart()
         .forEach(
-          (p, i) => text += `${i + 1}) ${p.title} - ${p.amount} ${p.measure}${i < Cart.getCart().length - 1 ? ';' : '. '} \n`);
-    text += `\nПредварительная сумма заказа: ${Math.floor(Cart.getTotalSum())} руб. `;
+          (p, i) =>
+            text += `${i + 1}) ${p.title} - ${p.amount} ${p.measure}${i < Cart.getCart().length - 1 ? ';' : '. '} \n`);
+    text += `\nПредварительная сумма заказа: ${Math.ceil(Cart.getTotalSum())} руб. `;
     return encodeURI(text);
   }
 
   static getTotalSum() {
-    return Cart.getCart().reduce((sum, p) => sum + ((p.price * p.amount) / p.priceAmountStep), 0);
+    return roundToTwoDigits(Cart.getCart().reduce((sum, p) => sum + ((p.price * p.amount) / p.priceAmountStep), 0));
   }
 }
 
