@@ -1,5 +1,6 @@
 import productList from '../../../config/products';
 import { roundToTwoDigits } from '../../../utils/formatters';
+import metrics from '../../../config/metrics';
 
 class Cart {
   static cart;
@@ -13,11 +14,13 @@ class Cart {
       currentCart.push({ id, amount, ...productList.find((p) => p.id === id) });
     }
     Cart.updateSavedCart();
+    ym(metrics.yandexId, 'reachGoal', 'addProduct');
   }
 
   static removeProduct(id) {
     Cart.cart = Cart.getCart().filter((cp) => cp.id !== id);
     Cart.updateSavedCart();
+    ym(metrics.yandexId, 'reachGoal', 'removeProduct');
   }
 
   static updateProduct(id, data) {
@@ -26,6 +29,7 @@ class Cart {
       return { ...cp, ...data };
     });
     Cart.updateSavedCart();
+    ym(metrics.yandexId, 'reachGoal', 'updateProduct');
   }
 
   static updateSavedCart() {
@@ -46,6 +50,7 @@ class Cart {
 
   static submitCartWhatsApp(e) {
     e.preventDefault();
+    ym(metrics.yandexId, 'reachGoal', 'submitCart');
     const url = `${e.target.href}?text=${Cart.getOrderText()}&lang=ru`;
     window.open(url, '_blank');
   }

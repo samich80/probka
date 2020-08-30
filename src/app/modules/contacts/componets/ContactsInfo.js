@@ -5,6 +5,7 @@ import {
   formatRusPhoneNumberForCall,
 } from '../../../utils/formatters';
 import Cart from '../../cart/utils/Cart';
+import metrics from '../../../config/metrics';
 
 export default ({ phoneForCall, phoneForWhatsApp, email, schedule }) => (
   <div className="contacts-info">
@@ -28,7 +29,11 @@ export default ({ phoneForCall, phoneForWhatsApp, email, schedule }) => (
     {phoneForCall &&
     <div className="form-group">
       <label htmlFor="phone-for-call">Телефон</label>
-      <a id="phone-for-call" href={`tel:${formatRusPhoneNumberForCall(phoneForCall)}`}>
+      <a
+        id="phone-for-call"
+        href={`tel:${formatRusPhoneNumberForCall(phoneForCall)}`}
+        onClick={ym(metrics.yandexId, 'reachGoal', 'clickPhone')}
+      >
         <i className="fas fa-mobile-alt"/>
         {formatRusPhoneNumber(phoneForCall)}
       </a>

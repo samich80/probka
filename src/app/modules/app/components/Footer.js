@@ -6,6 +6,7 @@ import {
 } from '../../../utils/formatters';
 import '../styles/Footer.styl';
 import Cart from '../../cart/utils/Cart';
+import metrics from '../../../config/metrics';
 
 export default ({ phoneForCall, phoneForWhatsApp }) => (
   <footer className="container-fluid">
@@ -21,7 +22,10 @@ export default ({ phoneForCall, phoneForWhatsApp }) => (
           <div className="col-md-6 col-sm-12 info">
             <div>
               <div className="phone">
-                <a href={`tel:${formatRusPhoneNumberForCall(phoneForCall)}`}>
+                <a
+                  href={`tel:${formatRusPhoneNumberForCall(phoneForCall)}`}
+                  onClick={ym(metrics.yandexId, 'reachGoal', 'clickPhone')}
+                >
                   {formatRusPhoneNumber(phoneForCall)}
                 </a>
               </div>
@@ -43,7 +47,7 @@ export default ({ phoneForCall, phoneForWhatsApp }) => (
       </div>
     </div>
     <div className="text-center">
-      Все права защищены &copy; {new Date().getFullYear()} Магазин пробка
+      Все права защищены &copy; {new Date().getFullYear()} Магазин &quot;Пробка&quot;
     </div>
   </footer>
 );

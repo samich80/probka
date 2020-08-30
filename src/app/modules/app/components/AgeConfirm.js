@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import '../styles/AgeConfirm.styl';
+import metrics from '../../../config/metrics';
 
 export default () => {
   const [has18, setHas18] = useState(!!localStorage.getItem('has18'));
   if (has18) return null;
   const leaveSite = () => {
+    ym(metrics.yandexId, 'reachGoal', 'declineHas18');
     if (window.history?.length > 1) {
       window.history.back();
       return;
@@ -16,6 +18,7 @@ export default () => {
     setHas18(true);
     localStorage.setItem('has18', '1');
     window.dispatchEvent(new CustomEvent('setHas18'));
+    ym(metrics.yandexId, 'reachGoal', 'confirmHas18');
   };
   return (
     <div className="has18-confirm-modal">
@@ -33,4 +36,4 @@ export default () => {
       </div>
     </div>
   );
-}
+};

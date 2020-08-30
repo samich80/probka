@@ -211,7 +211,7 @@ export default [
   },
   {
     id: 22,
-    title: 'Фитсашки с перцем',
+    title: 'Фисташки с перцем',
     price: 1400,
     measure: 'кг',
     amountStep: 0.05,
