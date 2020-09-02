@@ -1,5 +1,5 @@
-#Probka shop
-##Setup
+# Probka shop
+## Setup
 1. Main index.html is in <code>/public</code>
 2. Project should be launched from web server (e.g. <code>php -S localhost:8000</code> in <code>/public</code>) 
 3. To build project:
