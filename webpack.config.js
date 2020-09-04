@@ -5,7 +5,7 @@ const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const HappyPack = require('happypack');
 
 const BUILD_DIR = path.resolve(__dirname, 'public/build');
-const APP_DIR = path.resolve(__dirname, 'src');
+const APP_DIR = path.resolve(__dirname, 'frontApp');
 
 const config = {
     mode: 'development',
