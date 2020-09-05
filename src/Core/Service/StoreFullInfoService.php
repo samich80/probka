@@ -2,6 +2,7 @@
 
 namespace App\Core\Service;
 
+use App\Core\Repository\SlideRepository;
 use App\Core\Repository\StoreInfoRepository;
 use App\Core\Repository\StoreProductCategoryRepository;
 use App\Core\Repository\StoreProductRepository;
@@ -12,6 +13,7 @@ class StoreFullInfoService
     private StoreInfoRepository $storeInfoRepository;
     private StoreProductCategoryRepository $storeProductCategoryRepository;
     private StoreProductRepository $storeProductRepository;
+    private SlideRepository $slideRepository;
 
     public function getFullInfo()
     {
@@ -22,6 +24,7 @@ class StoreFullInfoService
             'info' => $storeInfo,
             'productCategories' => $this->storeProductCategoryRepository->findBy(['storeId' => $storeId]),
             'products' => $this->storeProductRepository->findBy(['storeId' => $storeId]),
+            'slides' => $this->slideRepository->findBy(['storeId' => $storeId]),
         ];
     }
 
@@ -61,5 +64,12 @@ class StoreFullInfoService
         $this->storeProductRepository = $storeProductRepository;
     }
 
-
+    /**
+     * @required
+     * @param SlideRepository $slideRepository
+     */
+    public function setSlideRepository(SlideRepository $slideRepository): void
+    {
+        $this->slideRepository = $slideRepository;
+    }
 }

@@ -4,17 +4,14 @@ import '../styles/App.styl';
 import Header from './Header';
 import Footer from './Footer';
 import Slider from '../../slider/components/Slider';
-import ProductsList from '../../products/components/ProductsList';
 import Contacts from '../../contacts/componets/Contacts';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import productList from '../../../config/products';
-import contacts from '../../../config/contacts';
 import CartIndicator from '../../cart/components/CartIndicator';
 import CartModal from '../../cart/components/CartModal';
-import slides from '../../../config/slides';
 import AgeConfirm from './AgeConfirm';
 import { getStoreInfo } from '../dispatchers/storeInfoDispatchers';
 import SiteLoader from './SiteLoader';
+import ProductsByCategoriesList from '../../products/components/ProductsByCategoriesList';
 
 const App = () => {
   const [has18, setHas18] = useState(!!localStorage.getItem('has18'));
@@ -35,16 +32,15 @@ const App = () => {
   return (
     <>
       <div className={has18 ? '' : 'blurred'}>
-        <Header {...contacts} />
+        <Header {...storeInfo.info} />
         <main className="container">
-          <Slider list={slides}/>
-          <ProductsList title="Пивные радости" list={productList.filter((p) => p.category === 'beer')}/>
-          <ProductsList title="Подпивные радости" list={productList.filter((p) => p.category === 'snack')}/>
-          <Contacts {...contacts}/>
+          <Slider list={storeInfo.slides}/>
+          <ProductsByCategoriesList products={storeInfo.products} categories={storeInfo.productCategories}/>
+          <Contacts {...storeInfo.info}/>
         </main>
-        <Footer {...contacts}/>
+        <Footer {...storeInfo.info}/>
         <CartIndicator/>
-        <CartModal {...contacts}/>
+        <CartModal {...storeInfo.info}/>
       </div>
       <AgeConfirm/>
     </>

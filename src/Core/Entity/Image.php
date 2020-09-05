@@ -48,7 +48,7 @@ class Image
     /**
      * @ORM\Column(type="integer")
      */
-    private string $itemId;
+    private ?string $itemId;
 
     /**
      * @return int
@@ -141,15 +141,15 @@ class Image
     /**
      * @return string
      */
-    public function getItemId(): string
+    public function getItemId(): ?string
     {
         return $this->itemId;
     }
 
     /**
-     * @param string $itemId
+     * @param string|null $itemId
      */
-    public function setItemId(string $itemId): void
+    public function setItemId(?string $itemId): void
     {
         $this->itemId = $itemId;
     }

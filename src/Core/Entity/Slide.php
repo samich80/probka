@@ -39,7 +39,7 @@ class Slide
     /**
      * @ORM\Column(type="integer")
      */
-    private int $orderPosition;
+    private ?int $orderPosition = 0;
 
     /**
      * @ORM\OneToOne(targetEntity="Image")
@@ -105,15 +105,15 @@ class Slide
     /**
      * @return int
      */
-    public function getOrderPosition(): int
+    public function getOrderPosition(): ?int
     {
         return $this->orderPosition;
     }
 
     /**
-     * @param int $orderPosition
+     * @param int|null $orderPosition
      */
-    public function setOrderPosition(int $orderPosition): void
+    public function setOrderPosition(?int $orderPosition): void
     {
         $this->orderPosition = $orderPosition;
     }

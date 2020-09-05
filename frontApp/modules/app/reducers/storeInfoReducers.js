@@ -4,7 +4,6 @@ import {
 } from '../actions/storeInfoActions';
 
 const storeInfo = (state = {}, action) => {
-  console.error(action.type);
   switch (action.type) {
     case REQUEST_STORE_INFO:
       return {

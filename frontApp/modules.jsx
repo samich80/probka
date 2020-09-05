@@ -15,8 +15,6 @@ const store = createStore(
   applyMiddleware(...[thunk]),
 );
 
-console.error({ store });
-
 const modules = () => {
   if (document.getElementById('root')) {
     ReactDOM.render(

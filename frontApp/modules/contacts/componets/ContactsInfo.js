@@ -7,10 +7,10 @@ import {
 import Cart from '../../cart/utils/Cart';
 import metrics from '../../../config/metrics';
 
-export default ({ phoneForCall, phoneForWhatsApp, email, schedule }) => (
+export default ({ phoneForCall, phoneForWhatsapp, email, workTime, workBreaks, workDaysOff }) => (
   <div className="contacts-info">
     <h3>Контакты</h3>
-    {phoneForWhatsApp &&
+    {phoneForWhatsapp &&
     <div className="form-group">
       <label htmlFor="phone-for-whats-app">
         WhatsApp (Предварительный заказ)
@@ -18,12 +18,12 @@ export default ({ phoneForCall, phoneForWhatsApp, email, schedule }) => (
       <a
         target="_blank"
         className="phone-for-whats-app"
-        href={`https://wa.me/${phoneForWhatsApp}`}
+        href={`https://wa.me/${phoneForWhatsapp}`}
         rel="noopener noreferrer"
         onClick={Cart.submitCartWhatsApp}
       >
         <i className="fab fa-whatsapp"/>
-        {formatRusPhoneNumber(phoneForWhatsApp)}
+        {formatRusPhoneNumber(phoneForWhatsapp)}
       </a>
     </div>}
     {phoneForCall &&
@@ -46,12 +46,12 @@ export default ({ phoneForCall, phoneForWhatsApp, email, schedule }) => (
         {email}
       </a>
     </div>}
-    {schedule &&
+    {(workTime || workBreaks || workDaysOff) &&
     <div className="form-group schedule">
       <label htmlFor="email">Режим работы:</label>
-      {schedule.time && <div className="schedule-time">{schedule.time}</div>}
-      {schedule.breaks && <div>{schedule.breaks}</div>}
-      {schedule.daysOff && <div>{schedule.daysOff}</div>}
+      {workTime && <div className="schedule-time">{workTime}</div>}
+      {workBreaks && <div>{workBreaks}</div>}
+      {workDaysOff && <div>{workDaysOff}</div>}
     </div>}
   </div>
 );

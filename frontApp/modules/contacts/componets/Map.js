@@ -1,10 +1,10 @@
 import React from 'react';
 import '../styles/Maps.styl';
 
-export default ({ mapIframeLink }) => (
+export default ({ mapLink }) => (
   <div className="contacts-map">
     <iframe
-      src={mapIframeLink}
+      src={mapLink}
       frameBorder="0"
       style={{ border: 0 }}
       allowFullScreen="false"
