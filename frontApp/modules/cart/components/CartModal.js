@@ -3,7 +3,7 @@ import '../styles/CartModal.styl';
 import CartProductList from './CartProductList';
 import Cart from '../utils/Cart';
 
-export default ({ phoneForWhatsApp }) => {
+export default ({ phoneForWhatsapp }) => {
   const [cart, setCart] = useState([...Cart.getCart()]);
   const [isOpen, setIsOpen] = useState(false);
   window.addEventListener('cartUpdate', () => {
@@ -48,7 +48,7 @@ export default ({ phoneForWhatsApp }) => {
         <a
           target="_blank"
           className="phone-for-whats-app"
-          href={`https://wa.me/${phoneForWhatsApp}`}
+          href={`https://wa.me/${phoneForWhatsapp}`}
           rel="noopener noreferrer"
           onClick={Cart.submitCartWhatsApp}
         >

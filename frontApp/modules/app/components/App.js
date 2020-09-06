@@ -12,6 +12,7 @@ import AgeConfirm from './AgeConfirm';
 import { getStoreInfo } from '../dispatchers/storeInfoDispatchers';
 import SiteLoader from './SiteLoader';
 import ProductsByCategoriesList from '../../products/components/ProductsByCategoriesList';
+import Cart from '../../cart/utils/Cart';
 
 const App = () => {
   const [has18, setHas18] = useState(!!localStorage.getItem('has18'));
@@ -28,6 +29,8 @@ const App = () => {
   if (!storeInfo.isLoaded) {
     return <SiteLoader/>;
   }
+
+  Cart.setProductList(storeInfo.products);
 
   return (
     <>

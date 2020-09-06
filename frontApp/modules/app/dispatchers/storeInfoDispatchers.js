@@ -9,7 +9,11 @@ const getStoreInfo = () => (dispatch) => {
   axios
     .get('/api/store/info')
     .then(({ data }) => dispatch(receiveStoreInfo(data)))
-    .catch(() => location.reload());
+    .catch(() => {
+      if (confirm('Произошёл сбой в работе сайта. Пожалуйста, перезагрузите страницу через несколько минут.')) {
+        location.reload();
+      }
+    });
 };
 
 export {

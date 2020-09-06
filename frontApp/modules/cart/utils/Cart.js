@@ -1,9 +1,9 @@
-import productList from '../../../config/products';
 import { roundToTwoDigits } from '../../../utils/formatters';
 import metrics from '../../../config/metrics';
 
 class Cart {
   static cart;
+  static productList;
 
   static addProduct({ id, amount }) {
     const currentCart = Cart.getCart();
@@ -11,7 +11,7 @@ class Cart {
     if (currentProduct) {
       currentProduct.amount += amount;
     } else {
-      currentCart.push({ id, amount, ...productList.find((p) => p.id === id) });
+      currentCart.push({ id, amount, ...Cart.productList.find((p) => p.id === id) });
     }
     Cart.updateSavedCart();
     ym(metrics.yandexId, 'reachGoal', 'addProduct');
@@ -41,8 +41,8 @@ class Cart {
     if (!Cart.cart) {
       Cart.cart = JSON.parse(localStorage.getItem('cart')) || [];
       Cart.cart = Cart.cart
-                      .filter((sp) => productList.find((p) => p.id === sp.id))
-                      .map((sp) => ({ ...sp, ...productList.find((p) => p.id === sp.id) }));
+                      .filter((sp) => Cart.productList.find((p) => p.id === sp.id))
+                      .map((sp) => ({ ...sp, ...Cart.productList.find((p) => p.id === sp.id) }));
     }
 
     return Cart.cart;
@@ -73,6 +73,10 @@ class Cart {
 
   static getTotalSum() {
     return roundToTwoDigits(Cart.getCart().reduce((sum, p) => sum + ((p.price * p.amount) / p.priceAmountStep), 0));
+  }
+
+  static setProductList(list) {
+    Cart.productList = list;
   }
 }
 

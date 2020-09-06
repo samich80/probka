@@ -8,7 +8,7 @@ import '../styles/Footer.styl';
 import Cart from '../../cart/utils/Cart';
 import metrics from '../../../config/metrics';
 
-export default ({ phoneForCall, phoneForWhatsApp }) => (
+export default ({ phoneForCall, phoneForWhatsapp }) => (
   <footer className="container-fluid">
     <div className="row">
       <div className="container">
@@ -33,7 +33,7 @@ export default ({ phoneForCall, phoneForWhatsApp }) => (
                 <a
                   target="_blank"
                   className="phone-for-whats-app"
-                  href={`https://wa.me/${phoneForWhatsApp}`}
+                  href={`https://wa.me/${phoneForWhatsapp}`}
                   rel="noopener noreferrer"
                   onClick={Cart.submitCartWhatsApp}
                 >

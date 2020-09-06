@@ -5,7 +5,7 @@ import ProductsList from './ProductsList';
 
 export default ({ products, categories }) => (
   categories
-    .filter((category) => products.find(product => product.categoryId === category.id))
+    .filter((category) => products.find((product) => product.categoryId === category.id))
     .map((category) => (
       <ProductsList title={category.title} list={products.filter((product) => product.categoryId === category.id)}/>))
 );
