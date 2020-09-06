@@ -23,7 +23,7 @@ class ProductCategory
     /**
      * @ORM\Column(type="integer")
      */
-    private int $parentId = 0;
+    private ?int $parentId;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -33,7 +33,7 @@ class ProductCategory
     /**
      * @ORM\Column(type="string", length=20)
      */
-    private string $alias;
+    private ?string $alias;
 
     /**
      * @return int
@@ -44,17 +44,17 @@ class ProductCategory
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getParentId(): int
+    public function getParentId(): ?int
     {
         return $this->parentId;
     }
 
     /**
-     * @param int $parentId
+     * @param int|null $parentId
      */
-    public function setParentId(int $parentId): void
+    public function setParentId(?int $parentId): void
     {
         $this->parentId = $parentId;
     }
@@ -76,17 +76,17 @@ class ProductCategory
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getAlias(): string
+    public function getAlias(): ?string
     {
         return $this->alias;
     }
 
     /**
-     * @param string $alias
+     * @param string|null $alias
      */
-    public function setAlias(string $alias): void
+    public function setAlias(?string $alias): void
     {
         $this->alias = $alias;
     }

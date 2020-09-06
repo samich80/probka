@@ -28,25 +28,25 @@ class StoreProduct
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private string $alias;
+    private ?string $alias;
 
     /**
-     * @ORM\Column(type="decimal", scale=5, precision=3)
+     * @ORM\Column(type="decimal", scale=3, precision=8)
      */
     private $defaultPrice;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private int $measure_id;
+    private ?int $measure_id;
 
     /**
-     * @ORM\Column(type="decimal", scale=5, precision=3)
+     * @ORM\Column(type="decimal", scale=3, precision=8)
      */
     private float $amountStep;
 
     /**
-     * @ORM\Column(type="decimal", scale=5, precision=3)
+     * @ORM\Column(type="decimal", scale=3, precision=8)
      */
     private float $priceAmountStep;
 
@@ -56,12 +56,12 @@ class StoreProduct
     private int $categoryId;
 
     /**
-     * @ORM\Column(type="decimal", scale=5, precision=3)
+     * @ORM\Column(type="decimal", scale=3, precision=8)
      */
     private float $minAmount;
 
     /**
-     * @ORM\Column(type="decimal", scale=5, precision=3, nullable=true)
+     * @ORM\Column(type="decimal", scale=3, precision=8, nullable=true)
      */
     private $price;
 
@@ -71,10 +71,10 @@ class StoreProduct
     private int $storeId;
 
     /**
-     * @var Measure
+     * @var Measure|null
      * @ORM\ManyToOne(targetEntity="Measure")
      */
-    private Measure $measure;
+    private ?Measure $measure;
 
     /**
      * @return int
@@ -93,17 +93,17 @@ class StoreProduct
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getAlias(): string
+    public function getAlias(): ?string
     {
         return $this->alias;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getMeasureId(): int
+    public function getMeasureId(): ?int
     {
         return $this->measure_id;
     }
@@ -159,7 +159,7 @@ class StoreProduct
     /**
      * @return string
      */
-    public function getMeasure(): string
+    public function getMeasure(): ?string
     {
         return $this->measure ? $this->measure->getTitle() : '';
     }

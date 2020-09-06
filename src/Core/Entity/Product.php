@@ -28,10 +28,10 @@ class Product
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private string $alias;
+    private ?string $alias;
 
     /**
-     * @ORM\Column(type="decimal", scale=5, precision=3)
+     * @ORM\Column(type="decimal", scale=2, precision=8)
      */
     private float $defaultPrice;
 
@@ -41,14 +41,14 @@ class Product
     private int $measure_id;
 
     /**
-     * @ORM\Column(type="decimal", scale=5, precision=3)
+     * @ORM\Column(type="decimal", scale=3, precision=8)
      */
-    private float $amountStep;
+    private float $amountStep = 1;
 
     /**
-     * @ORM\Column(type="decimal", scale=5, precision=3)
+     * @ORM\Column(type="decimal", scale=3, precision=8)
      */
-    private float $priceAmountStep;
+    private float $priceAmountStep = 1;
 
     /**
      * @ORM\Column(type="integer")
@@ -56,9 +56,9 @@ class Product
     private int $categoryId;
 
     /**
-     * @ORM\Column(type="decimal", scale=5, precision=3)
+     * @ORM\Column(type="decimal", scale=3, precision=8)
      */
-    private float $minAmount;
+    private float $minAmount = 1;
 
     /**
      * @return int
@@ -93,17 +93,17 @@ class Product
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getAlias(): string
+    public function getAlias(): ?string
     {
         return $this->alias;
     }
 
     /**
-     * @param string $alias
+     * @param string|null $alias
      */
-    public function setAlias(string $alias): void
+    public function setAlias(?string $alias): void
     {
         $this->alias = $alias;
     }

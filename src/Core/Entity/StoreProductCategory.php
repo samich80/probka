@@ -34,7 +34,7 @@ class StoreProductCategory
     /**
      * @ORM\Column(type="string", length=20)
      */
-    private string $alias;
+    private ?string $alias;
 
     /**
      * @ORM\Column(type="integer")
@@ -66,9 +66,9 @@ class StoreProductCategory
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getAlias(): string
+    public function getAlias(): ?string
     {
         return $this->alias;
     }
