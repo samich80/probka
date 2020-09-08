@@ -1,19 +1,19 @@
 <?php
 
-//namespace App\API\Controller;
-//
-//use App\API\Service\ParseEvatorService;
-//use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-//use Symfony\Component\HttpFoundation\Response;
-//use Symfony\Component\Routing\Annotation\Route;
-//
-///**
-// * Class StoreController
-// * @package App\API\Controller
-// * @Route("/api/parse-evator")
-// */
-//class ParseEvatorController extends AbstractController
-//{
+namespace App\API\Controller;
+
+use App\API\Service\ParseEvatorService;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+/**
+ * Class StoreController
+ * @package App\API\Controller
+ * @Route("/api/parse-evator")
+ */
+class ParseEvatorController extends AbstractController
+{
 //    /**
 //     * @Route("/parse-uploaded")
 //     * @param ParseEvatorService $parseEvatorService
@@ -23,4 +23,4 @@
 //    {
 //        return  $this->json($parseEvatorService->parse($this->getDoctrine()->getManager()));
 //    }
-//}
+}

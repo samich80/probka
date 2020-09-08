@@ -10,54 +10,85 @@
   .table
     td, th
       vertical-align middle
+    &.table-adaptive
+      .td-title
+        display none
+        margin-right 15px
+        font-weight bold
+    .dataTables_paginate
+      .pagination
+        float right
+        border none
+        .page-item
+          .page-link
+            border none
+            color #000
+            &:hover
+              background-color #000
+              color #fff
+          &.active
+            .page-link
+              background-color #000
+              color #fff
   .blurred
     filter: blur(8px)
     -ms-filter: blur(8px)
     -webkit-filter: blur(8px)
 @media screen and (max-width: 767px)
-  .table-adaptive
-    /* Force table to not be like tables anymore */
+  #root
+    .table
+      &.table-adaptive
+        /* Force table to not be like tables anymore */
 
-    table, thead, tbody, th, td, tr {
-      display: block;
-    }
+        table, thead, tbody, th, td, tr {
+          display: block;
+        }
 
-    /* Hide table headers (but not display: none;, for accessibility) */
-    thead tr {
-      position: absolute
-      top: -9999px
-      left: -9999px
-    }
+        /* Hide table headers (but not display: none;, for accessibility) */
+        thead tr {
+          position: absolute
+          top: -9999px
+          left: -9999px
+        }
 
-    tr
-      border: 1px solid #ccc
+        tr
+          border: 1px solid #ccc
 
-    td {
-      /* Behave  like a "row" */
-      border: none;
-      border-bottom: 1px solid #eee;
-      position: relative;
-      padding-left: 50%;
-      display: flex
-    }
+        td {
+          /* Behave  like a "row" */
+          border: none;
+          border-bottom: 1px solid #eee;
+          position: relative;
+          display: flex
+        }
 
-    td:before
-      /* Now like a table header */
-      position relative
-      width: 45%;
-      padding-right: 10px;
-      white-space: nowrap;
-      font-weight bold
+        td:before
+          /* Now like a table header */
+          position relative
+          width: 45%;
+          padding-right: 10px;
+          white-space: nowrap;
+          font-weight bold
 
-    td
-      &[data-column-title]
-        &:before
-          content: attr(data-column-title)
+        td
+          &[data-column-title]
+            &:before
+              content: attr(data-column-title)
 
+        .td-title
+          display inline-block
+        div
+          &.form
+            margin 10px auto
 
-  div
-    &.form
-      margin 10px auto
+            .input-group
+              margin-bottom 0 !important
 
-      .input-group
-        margin-bottom 0 !important
+    .dataTables_wrapper
+      .dataTables_paginate
+        display flex
+        .pagination
+          margin auto
+          li
+            margin 0 5px
+
