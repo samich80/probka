@@ -63,7 +63,7 @@ class StoreProduct
     /**
      * @ORM\Column(type="decimal", scale=3, precision=8, nullable=true)
      */
-    private $price;
+    private float $price;
 
     /**
      * @ORM\Column(type="integer")
@@ -71,10 +71,10 @@ class StoreProduct
     private int $storeId;
 
     /**
-     * @var Measure|null
-     * @ORM\ManyToOne(targetEntity="Measure")
+     * @var StoreMeasure|null
+     * @ORM\ManyToOne(targetEntity="StoreMeasure")
      */
-    private ?Measure $measure;
+    private ?StoreMeasure $measure;
 
     /**
      * @return int
@@ -161,6 +161,6 @@ class StoreProduct
      */
     public function getMeasure(): ?string
     {
-        return $this->measure ? $this->measure->getTitle() : '';
+        return !empty($this->measure) ? $this->measure->getTitle() : '';
     }
 }

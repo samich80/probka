@@ -3,14 +3,14 @@
 
 namespace App\Core\Entity;
 
-use App\Core\Repository\MeasureRepository;
+use App\Core\Repository\MeasureToStoreRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=MeasureRepository::class)
+ * @ORM\Entity(repositoryClass=MeasureToStoreRepository::class)
  * @ORM\Table(name="measure")
  */
-class Measure
+class MeasureToStore
 {
 
     /**
@@ -29,6 +29,11 @@ class Measure
      * @ORM\Column(type="string")
      */
     private string $internationalName;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private int $storeId;
 
     /**
      * @return int
